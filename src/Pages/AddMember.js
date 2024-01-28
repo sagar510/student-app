@@ -54,8 +54,8 @@ function AddMember() {
 
   return (
     <Base>
-      <Container maxWidth="sm">
-        <Typography variant="h4">Add a new Member</Typography>
+      <Container maxWidth="md">
+        <h2>Add a new Member</h2>
         <form onSubmit={handleSubmit}>
           <Box mt={2}>
             <TextField

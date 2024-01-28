@@ -17,6 +17,9 @@ import { isAuthenticated,getCurrentUser } from './auth.js';
 import Privateroute from './Components/PrivateRoute.js';
 import PasswordChange from './Pages/changePassword.js';
 import AddCourse from './Pages/AddCourse.js';
+import CourseListTeacher from './Pages/Teach.js';
+import CourseListStudent from './Pages/Enrol.js';
+//import CourseListStudent from './Pages/Enrol.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -34,9 +37,12 @@ root.render(
         <Route path='AddMember' element={<AddMember />} />
         <Route path='Members' element={<Members/>}/>
         <Route path='profile' element={<Profile />} />
-        <Route path='/change_password' element={<PasswordChange />} />
+        <Route path='change_password' element={<PasswordChange />} />
         <Route path='AddCourse' element={<AddCourse />} />
+        <Route path='teach' element={<CourseListTeacher/>} />
+        <Route path='enrol' element={<CourseListStudent/>} />
       </Route>
+      
       
       <Route path='/login' element={<Login />} />
       <Route path='/logout' element={<Logout />} />

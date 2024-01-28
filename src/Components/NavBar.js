@@ -34,6 +34,7 @@ const NavBar = ()=> {
         {(islogin&&role=='teacher')?
         <>
         <Button component={Link} color='inherit' to="/AddCourse">Add Course</Button>
+        <Button component={Link} color='inherit' to="/teach">New</Button>
         </>
         :null
         }

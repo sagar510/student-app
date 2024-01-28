@@ -14,20 +14,21 @@ import {
 
 function AddCourse() {
 
-    const [cname,setfname] = useState("");
+    const [course_name,setfname] = useState("");
     const [duration,setlname] = useState("");
 
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        const postData = {cname,duration: parseInt(duration, 10)};
-    
-        const response = await fetch(`http://localhost:3000/createcourse`,{
+        const postData = {course_name,duration: parseInt(duration, 10)};
+      
+        try {
+        const response = await fetch(`http://localhost:8080/createcourse`,{
         
             method: "POST",
             headers:{
                 "content-type": "application/json",
-                Authorization: `Bearer ${getToken}`
+                //Authorization: `Bearer ${getToken}`
             },
             body: JSON.stringify(postData),
     
@@ -43,6 +44,10 @@ function AddCourse() {
         }else{
             console.log("Error Ocurred");
         }
+
+      } catch (error) {
+        console.error("An error occurred while submitting data:", error);
+    }
     
     }
 
@@ -56,7 +61,7 @@ function AddCourse() {
               label="Course Name"
               fullWidth
               variant="outlined"
-              value={cname}
+              value={course_name}
               onChange={(e) => setfname(e.target.value)}
               required
             />

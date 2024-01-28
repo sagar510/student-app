@@ -14,12 +14,16 @@ import '../App.css';
 import { toast,ToastContainer } from "react-toastify";
 
 function Profile() {
+
   const [data, setdata] = useState({});
   const [name, setname] = useState("");
   const navigate = useNavigate();
 
+  console.log(data);     
+
   useEffect(() => {
-    fetch(`http://localhost:3000/viewprofile`, {
+    fetch(
+      `http://localhost:3000/viewprofile`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${getToken()}`,
@@ -28,11 +32,13 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         setdata(data);
-        if (data.role === "admin") setname(data.admin_name);
-        else if (data.role === "student") setname(data.student_name);
-        else if (data.role === "teacher") setname(data.teacher_name);
+       if (data.role === "admin") setname(data.admin.admin_name);
+        else if (data.role === "student") setname(data.student.student_name);
+        else if (data.role === "teacher") setname(data.teacher.teacher_name);
       });
   }, []);
+
+  console.log(data);
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
@@ -84,7 +90,14 @@ function Profile() {
               </Grid>
               {(data.role === "student" || data.role === "teacher") && (
                 <Grid item xs={12}>
-                  <Typography>Created By: {data.admin_name}</Typography>
+                  <Typography>Created By: {
+                   data.role === "teacher" && 
+                  data.teacher.admin.admin_name
+                  }
+                  {
+                  data.role === "student" && 
+                  data.student.admin.admin_name
+                  }</Typography>
                 </Grid>
               )}
             </Grid>
