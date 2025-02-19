@@ -18,12 +18,13 @@ function Profile() {
   const [data, setdata] = useState({});
   const [name, setname] = useState("");
   const navigate = useNavigate();
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   console.log(data);     
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/viewprofile`, {
+      `${baseUrl}/viewprofile`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${getToken()}`,
@@ -44,8 +45,9 @@ function Profile() {
     e.preventDefault();
 
     const postData = { name };
+    const baseUrl = process.env.REACT_APP_API_URL;
 
-    const response = await fetch(`http://localhost:3000/updateprofile`, {
+    const response = await fetch(`${baseUrl}/updateprofile`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

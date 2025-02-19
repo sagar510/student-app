@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 function AllTeachers() {
 
     const [stu_data,set_stu_data] = useState([]);
+    const baseUrl = process.env.REACT_APP_API_URL;
 
     useEffect(   () => {
         fetch(

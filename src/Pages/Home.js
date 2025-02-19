@@ -12,11 +12,12 @@ function Home() {
    const logIn = isAuthenticated();
 
    const [data, setdata] = useState({});
+   const baseUrl = process.env.REACT_APP_API_URL;
 
    useEffect(() => {
     if(logIn){
     fetch(
-      `http://localhost:3000/viewprofile`, {
+      `${baseUrl}/viewprofile`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${getToken()}`,

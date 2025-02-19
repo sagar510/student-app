@@ -11,13 +11,14 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const postData = { email, password };
 
-    const response = await fetch(`http://localhost:3000/authenticate`, {
+    const response = await fetch(`${baseUrl}/authenticate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

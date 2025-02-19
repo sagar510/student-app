@@ -12,10 +12,11 @@ function  Members() {
     //const rowsPerPage =7
 
     //const [studata,setstudata] = useState([]);
+    const baseUrl = process.env.REACT_APP_API_URL;
 
     useEffect(   () => {
         fetch(
-            `http://localhost:3000/viewmember`,{
+            `${baseUrl}/viewmember`,{
                 method: "GET",
                 headers: {
                     "Authorization":`Bearer ${getToken()}`

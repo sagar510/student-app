@@ -16,6 +16,7 @@ function AddCourse() {
 
     const [course_name,setfname] = useState("");
     const [duration,setlname] = useState("");
+    const baseUrl = process.env.REACT_APP_API_URL;
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ function AddCourse() {
         const postData = {course_name,duration: parseInt(duration, 10)};
       
         try {
-        const response = await fetch(`http://localhost:8080/createcourse`,{
+        const response = await fetch(`${baseUrl}/createcourse`,{
         
             method: "POST",
             headers:{

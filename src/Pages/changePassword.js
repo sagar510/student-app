@@ -8,6 +8,7 @@ const PasswordChange = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   const handlePasswordChange = async (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const PasswordChange = () => {
       new_password: newPassword,
     };
 
-    const response = await fetch(`http://localhost:3000/updatepassword`, {
+    const response = await fetch(`${baseUrl}/updatepassword`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

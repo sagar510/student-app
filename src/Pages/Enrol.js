@@ -9,6 +9,7 @@ import { toast,ToastContainer } from 'react-toastify';
 const CourseListStudent = () => {
 
   const [data, setdata] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_URL;
  
   useEffect(() => {
     fetch(
@@ -35,6 +36,7 @@ const CourseListStudent = () => {
       courseID: parseInt(courseId,10),
       studentID: parseInt(getRoleID(),10),
     };
+    const baseUrl = process.env.REACT_APP_API_URL;
   
     try {
       const response = await fetch("http://localhost:8080/enrol", {

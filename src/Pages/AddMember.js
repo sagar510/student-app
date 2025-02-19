@@ -25,8 +25,9 @@ function AddMember() {
     e.preventDefault();
 
     const postData = { name, email, password, role };
+    const baseUrl = process.env.REACT_APP_API_URL;
 
-    const response = await fetch(`http://localhost:3000/createuserandmember`, {
+    const response = await fetch(`${baseUrl}/createuserandmember`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
