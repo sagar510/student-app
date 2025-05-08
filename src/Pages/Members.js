@@ -75,83 +75,80 @@ function  Members() {
         </TableRow>
     ));
 
-    if(studata)
-        return (
-            <Base>
-            
-            <div>
-                <h2>All Students</h2>
-                
-                    <TableContainer>
-                    <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell><h3>Student Name</h3></TableCell>
-                            <TableCell><h3>Email</h3></TableCell>
-                            <TableCell><h3>Created By</h3></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>{Eachstutablerow}</TableBody>
-                    </Table>
-                    </TableContainer>
-                
-               { <TablePagination
-               rowsPerPageOptions={[7, 14, 21]}
-                component="div"
-                count={studata.length} // Total number of students
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage} // Function to handle page changes
-                onRowsPerPageChange={handleChangeRowsPerPage}
-        />}
-            </div>
-            <div>
-                <h2>All Teachers</h2>
-                <TableContainer>
-                    <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell><h3>Teacher Name</h3></TableCell>
-                            <TableCell><h3>Email</h3></TableCell>
-                            <TableCell><h3>Created By</h3></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>{Eachtchrtablerow}</TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                component="div"
-                count={studata.length} // Total number of students
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage} // Function to handle page changes
-                />
-            </div>
-            <div className="App">
-                <h1>All Admins</h1>
-                <TableContainer>
-                    <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell><h3>Admin Name</h3></TableCell>
-                            <TableCell><h3>Email</h3></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>{Eachadmintablerow}</TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                component="div"
-                count={studata.length} // Total number of students
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage} // Function to handle page changes
-                />
-            </div>
-            </Base>
-        );
+    return (
+        <Base>
         
-    return <h1>Null Data</h1>
+        <div>
+            <h2>All Students</h2>
+            
+                <TableContainer>
+                <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell><h3>Student Name</h3></TableCell>
+                        <TableCell><h3>Email</h3></TableCell>
+                        <TableCell><h3>Created By</h3></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>{Eachstutablerow}</TableBody>
+                </Table>
+                </TableContainer>
+            
+            { <TablePagination
+            rowsPerPageOptions={[7, 14, 21]}
+            component="div"
+            count={studata.length} // Total number of students
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage} // Function to handle page changes
+            onRowsPerPageChange={handleChangeRowsPerPage}
+    />}
+        </div>
+        <div>
+            <h2>All Teachers</h2>
+            <TableContainer>
+                <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell><h3>Teacher Name</h3></TableCell>
+                        <TableCell><h3>Email</h3></TableCell>
+                        <TableCell><h3>Created By</h3></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>{Eachtchrtablerow}</TableBody>
+                </Table>
+            </TableContainer>
+            <TablePagination
+            component="div"
+            count={studata.length} // Total number of students
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage} // Function to handle page changes
+            />
+        </div>
+        <div className="App">
+            <h1>All Admins</h1>
+            <TableContainer>
+                <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell><h3>Admin Name</h3></TableCell>
+                        <TableCell><h3>Email</h3></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>{Eachadmintablerow}</TableBody>
+                </Table>
+            </TableContainer>
+            <TablePagination
+            component="div"
+            count={studata.length} // Total number of students
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage} // Function to handle page changes
+            />
+        </div>
+        </Base>
+    );
 
 }
 
