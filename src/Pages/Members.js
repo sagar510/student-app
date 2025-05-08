@@ -38,12 +38,12 @@ function  Members() {
         setPage(0);
     };
 
-    const studata = data || [] 
+    const commonData = data || [] 
     const admindata = data.admin || []
     const tchrdata = data.teacher || []
 
     //const Eachstutablerow = [];
-    const Eachstutablerow = studata
+    const Eachstutablerow = commonData
     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
     .map((item) => ( 
         (item.role === 'student') ?
@@ -56,23 +56,29 @@ function  Members() {
     ));
 
 
-    const Eachadmintablerow = tchrdata
+    const Eachadmintablerow = commonData
     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-    .map((item) => (
-        <TableRow key={item.id}>
-            <TableCell>{item.admin_name}</TableCell>
-            <TableCell>{item.email}</TableCell>
-        </TableRow>
+    .map((item) => ( 
+        (item.role === 'admin') ?
+            <TableRow key={item.id}>
+                <TableCell>{item.admin && item.admin.admin_name}</TableCell>
+                <TableCell>{item.email}</TableCell>
+                <TableCell>{item.admin && item.admin.admin && item.admin.admin.admin_name}</TableCell>
+            </TableRow>
+        :null
     ));
 
-    const Eachtchrtablerow = tchrdata
-    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-    .map((item) => (
-        <TableRow key={item.id}>
-            <TableCell>{item.teacher_name}</TableCell>
-            <TableCell>{item.email}</TableCell>
-            <TableCell>{item.admin_name}</TableCell>
-        </TableRow>
+    console.log("admins"+Eachadmintablerow);
+
+    const Eachtchrtablerow = commonData
+    .map((item) => ( 
+        (item.role === 'teacher') ?
+            <TableRow key={item.id}>
+                <TableCell>{item.teacher && item.teacher.teacher_name}</TableCell>
+                <TableCell>{item.email}</TableCell>
+                <TableCell>{item.teacher && item.teacher.admin && item.teacher.admin.admin_name}</TableCell>
+            </TableRow>
+        :null
     ));
 
     return (
@@ -97,7 +103,7 @@ function  Members() {
             { <TablePagination
             rowsPerPageOptions={[7, 14, 21]}
             component="div"
-            count={studata.length} // Total number of students
+            count={commonData.length} // Total number of students
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage} // Function to handle page changes
@@ -120,7 +126,7 @@ function  Members() {
             </TableContainer>
             <TablePagination
             component="div"
-            count={studata.length} // Total number of students
+            count={commonData.length} // Total number of students
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage} // Function to handle page changes
@@ -141,7 +147,7 @@ function  Members() {
             </TableContainer>
             <TablePagination
             component="div"
-            count={studata.length} // Total number of students
+            count={commonData.length} // Total number of students
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage} // Function to handle page changes
